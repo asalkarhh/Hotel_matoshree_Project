@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-deva font-bold tracking-tight;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-cream;
+  }
+}
+
+@layer components {
+  .container-max {
+    @apply mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  /* Primary CTA button — gold */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-ink shadow-soft transition-all duration-200
+           hover:-translate-y-0.5 hover:bg-gold-light
+           focus-visible:ring-2 focus-visible:ring-offset-2
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  /* Brand button — maroon */
+  .btn-brand {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition-all duration-200
+           hover:-translate-y-0.5 hover:bg-brand-dark
+           focus-visible:ring-2 focus-visible:ring-offset-2
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  /* Outline button — for hero section on dark bg */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/75 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-all duration-200
+           hover:bg-white/10
+           focus-visible:ring-2 focus-visible:ring-offset-2
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  /* Card */
+  .card {
+    @apply rounded-2xl bg-white p-6 shadow-card ring-1 ring-black/5;
+  }
+
+  /* Section eyebrow label */
+  .eyebrow {
+    @apply inline-block rounded-full bg-brand/10 px-4 py-1 text-xs font-bold uppercase tracking-wide text-brand;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar        { width: 10px; }
+::-webkit-scrollbar-track  { background: #f1e8da; }
+::-webkit-scrollbar-thumb  { background: #c9a36b; border-radius: 8px; }
