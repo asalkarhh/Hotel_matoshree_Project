@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
+    "@vercel/analytics": "^2.0.1",
     "framer-motion": "^11.11.17",
     "i18next": "^23.16.8",
     "lucide-react": "^0.460.0",

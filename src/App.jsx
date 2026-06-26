@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar.jsx';
+import { Analytics } from '@vercel/analytics/react';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
 import Franchises from './components/Franchises.jsx';
@@ -32,6 +33,7 @@ export default function App() {
       <Footer />
       <FloatingButtons />
       <ScrollToTop />
+      <Analytics />
     </>
   );
 }
