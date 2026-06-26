@@ -16,7 +16,7 @@ export default function Hero() {
         src={ASSETS.heroPoster}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover object-top"
+        className="absolute inset-0 h-full w-full object-cover object-[center_top]"
       />
       <div className="absolute inset-0 bg-black/10" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
