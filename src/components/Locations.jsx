@@ -49,6 +49,8 @@ function BranchCard({ branch, lang, t }) {
   const [imgValid, setImgValid] = useState(true);
   const Icon    = TYPE_ICONS[branch.type] || UtensilsCrossed;
   const info    = branch[lang] || branch.mr;
+  const cityName = lang === 'mr' ? branch.cityMr || branch.city : branch.city;
+  const managerName = lang === 'mr' ? branch.managerNameMr || branch.managerName : branch.managerName;
   const isMainBranch = branch.id === 'hotel-dharashiv';
   const hasPhoto = branch.photo && !branch.photo.includes('{{') && imgValid;
   const telHref  = `tel:${(branch.mobile || '').replace(/[^\d+]/g, '')}`;
@@ -90,7 +92,7 @@ function BranchCard({ branch, lang, t }) {
         )}
         <span className="absolute right-3 top-3 inline-flex min-w-24 items-center justify-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-brand backdrop-blur">
           <Icon size={13} />
-          {branch.city}
+          {cityName}
         </span>
       </div>
 
@@ -101,14 +103,14 @@ function BranchCard({ branch, lang, t }) {
         <div className="mt-3 grid gap-2">
           <DetailLine icon={MapPin}>{info.address}</DetailLine>
           <DetailLine icon={UserRound}>
-            {t('locations.manager', 'Manager')}: {branch.managerName}
+            {t('locations.manager', 'Manager')}: {managerName}
           </DetailLine>
           <DetailLine icon={Phone}>{branch.mobile}</DetailLine>
         </div>
 
         {isMainBranch ? (
           <p className="mt-3 rounded-xl bg-brand/5 px-3 py-2 text-xs font-medium leading-relaxed text-brand">
-            Main branch of Hotel Matoshree
+            {lang === 'mr' ? 'हॉटेल मातोश्रीची मुख्य शाखा' : 'Main branch of Hotel Matoshree'}
           </p>
         ) : null}
 
