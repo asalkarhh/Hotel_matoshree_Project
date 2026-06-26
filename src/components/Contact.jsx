@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Phone, MessageCircle, Mail, MapPin, Clock, Facebook, Instagram, Youtube } from 'lucide-react';
+import { Phone, MessageCircle, Mail, MapPin, Clock, UserRound, Instagram, Youtube } from 'lucide-react';
 import SectionHeader from './SectionHeader.jsx';
 import { CONTACT, TEXT_VARS } from '../config.js';
 
@@ -13,11 +13,11 @@ export default function Contact() {
     { icon: MessageCircle, label: t('contact.whatsappLabel'),value: `+${CONTACT.whatsapp}`,     href: `https://wa.me/${CONTACT.whatsapp}` },
     { icon: Mail,          label: t('contact.emailLabel'),   value: CONTACT.email,              href: `mailto:${CONTACT.email}` },
     { icon: MapPin,        label: t('contact.addressLabel'), value: t('contact.address', TEXT_VARS) },
+    { icon: UserRound,     label: t('locations.manager'),    value: 'Prof. Manoj Surwase' },
     { icon: Clock,         label: t('contact.hoursLabel'),   value: t('contact.hours') },
   ];
 
   const socialLinks = [
-    { icon: Facebook,  href: CONTACT.social.facebook },
     { icon: Instagram, href: CONTACT.social.instagram },
     { icon: Youtube,   href: CONTACT.social.youtube },
   ];
@@ -85,15 +85,26 @@ export default function Contact() {
           </div>
 
           {/* Map */}
-          <div className="overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5">
+          <div className="relative overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5">
             {hasMap ? (
-              <iframe
-                title={t('contact.mapTitle')}
-                src={CONTACT.mapEmbedSrc}
-                className="h-full min-h-[320px] w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+              <>
+                <iframe
+                  title={t('contact.mapTitle')}
+                  src={CONTACT.mapEmbedSrc}
+                  className="h-full min-h-[320px] w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                <a
+                  href={CONTACT.mapLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-brand shadow-soft transition-colors hover:bg-brand hover:text-white"
+                >
+                  <MapPin size={16} />
+                  {t('locations.directions')}
+                </a>
+              </>
             ) : (
               <div className="flex h-full min-h-[320px] flex-col items-center justify-center bg-brand/5 p-8 text-center">
                 <MapPin size={40} className="text-brand/40" />

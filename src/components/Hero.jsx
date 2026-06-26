@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Star, ArrowRight } from 'lucide-react';
+import { ASSETS } from '../config.js';
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -11,9 +12,16 @@ export default function Hero() {
       className="relative flex min-h-[92vh] items-center overflow-hidden pt-16"
     >
       {/* Background layers */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-terracotta" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(212,160,23,0.25),transparent_55%)]" />
-      <div className="absolute inset-0 bg-black/20" />
+      <img
+        src={ASSETS.heroPoster}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-dark/75 via-brand/55 to-terracotta/55" />
+      <div className="absolute inset-0 bg-brand-dark/70" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(212,160,23,0.28),transparent_55%)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-black/25" />
 
       {/* Content */}
       <div className="container-max relative z-10 py-20 text-white">

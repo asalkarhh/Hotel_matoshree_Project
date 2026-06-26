@@ -72,7 +72,10 @@ function BranchCard({ branch, lang, t }) {
             alt={info.name}
             loading="lazy"
             onError={() => setImgValid(false)}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            style={{ objectPosition: branch.imagePosition || 'center' }}
+            className={`h-full w-full transition-transform duration-500 group-hover:scale-105 ${
+              branch.imageFit === 'contain' ? 'bg-white object-contain p-2' : 'object-cover'
+            }`}
           />
         ) : (
           <div

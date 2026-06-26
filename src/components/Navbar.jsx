@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Globe, Menu, X } from 'lucide-react';
+import { ASSETS } from '../config.js';
 
 const NAV_LINKS = [
   { id: 'about',      key: 'nav.about' },
@@ -46,24 +47,25 @@ export default function Navbar() {
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
+  const isHeroHeader = !scrolled && !menuOpen;
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-cream/95 shadow-soft backdrop-blur' : 'bg-transparent'
+        scrolled ? 'bg-cream/95 shadow-soft backdrop-blur' : 'bg-ink/70 backdrop-blur-sm'
       }`}
     >
       <nav className="container-max flex h-16 items-center justify-between lg:h-20">
         {/* Logo */}
         <a href="#home" onClick={closeMenu} className="flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand font-deva text-lg font-extrabold text-gold">
-            म
+          <span className="relative flex h-11 w-28 items-center overflow-hidden rounded bg-ink p-1 shadow-sm">
+            <img src={ASSETS.logo} alt={t('nav.brand')} className="absolute inset-1 h-[calc(100%-0.5rem)] w-[calc(100%-0.5rem)] object-contain" />
           </span>
           <span className="leading-tight">
-            <span className="block font-deva text-lg font-extrabold text-brand">
+            <span className={`block font-deva text-lg font-extrabold ${isHeroHeader ? 'text-white' : 'text-brand'}`}>
               {t('nav.brand')}
             </span>
-            <span className="block text-[11px] font-medium text-ink/60">
+            <span className={`block text-[11px] font-medium ${isHeroHeader ? 'text-white/70' : 'text-ink/60'}`}>
               {t('nav.tagline')}
             </span>
           </span>
@@ -75,7 +77,9 @@ export default function Navbar() {
             <li key={link.id}>
               <a
                 href={`#${link.id}`}
-                className="text-sm font-semibold text-ink/80 transition-colors hover:text-brand"
+                className={`text-sm font-semibold transition-colors ${
+                  isHeroHeader ? 'text-white/90 hover:text-gold' : 'text-ink/80 hover:text-brand'
+                }`}
               >
                 {t(link.key)}
               </a>
@@ -85,7 +89,7 @@ export default function Navbar() {
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-3 lg:flex">
-          <LangToggle />
+          <LangToggle className={isHeroHeader ? '!border-white/25 !bg-white/10 !text-white hover:!bg-white hover:!text-brand' : ''} />
           <a href="#apply" className="btn-primary">
             {t('nav.apply')}
           </a>
@@ -93,13 +97,13 @@ export default function Navbar() {
 
         {/* Mobile actions */}
         <div className="flex items-center gap-2 lg:hidden">
-          <LangToggle />
+          <LangToggle className={isHeroHeader ? '!border-white/25 !bg-white/10 !text-white hover:!bg-white hover:!text-brand' : ''} />
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={t(menuOpen ? 'common.close' : 'common.menu')}
             aria-expanded={menuOpen}
-            className="grid h-10 w-10 place-items-center rounded-lg text-brand"
+            className={`grid h-10 w-10 place-items-center rounded-lg ${isHeroHeader ? 'text-white' : 'text-brand'}`}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

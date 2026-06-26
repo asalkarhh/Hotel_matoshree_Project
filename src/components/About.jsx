@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { CheckCircle } from 'lucide-react';
-import { TEXT_VARS } from '../config.js';
+import { ASSETS, TEXT_VARS } from '../config.js';
 
 export default function About() {
   const { t } = useTranslation();
@@ -18,12 +18,14 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="relative"
         >
-          <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl bg-gradient-to-br from-brand to-terracotta shadow-soft">
-            <div className="flex h-full flex-col items-center justify-center p-8 text-center text-white">
-              <div className="grid h-24 w-24 place-items-center rounded-full bg-white/20 font-deva text-4xl font-extrabold text-gold">
-                म
-              </div>
-              <p className="mt-6 font-deva text-2xl font-bold">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-brand-dark shadow-soft">
+            <img
+              src={ASSETS.ownerPortrait}
+              alt={t('about.ownerName', TEXT_VARS)}
+              className="h-full w-full object-cover object-center"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent p-6 text-white">
+              <p className="font-deva text-2xl font-bold">
                 {t('about.ownerName', TEXT_VARS)}
               </p>
               <p className="mt-1 text-white/80">{t('about.ownerRole')}</p>

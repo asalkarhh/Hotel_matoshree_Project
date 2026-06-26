@@ -1,23 +1,59 @@
 // ─── Contact & Social Config ────────────────────────────────────────────
 // Replace every {{PLACEHOLDER}} with the real value before going live.
 
+import logo from './assets/new/Logo.png';
+import heroPoster from './assets/new/Mainbranch_Poster.png';
+import ownerPortrait from './assets/new/Owner1.png';
+import ownerAtBranch from './assets/new/Owner.png';
+import hotelBanner from './assets/new/Banner.png';
+import teaBanner from './assets/new/Tea-Banner.png';
+import dishStrip from './assets/new/Dish.png';
+import chicken from './assets/new/Chicken.png';
+import mutton from './assets/new/Mutton.png';
+import dhavaraSpecial from './assets/new/Dhavara_Special.png';
+import specialBiryani from './assets/new/Special_Biryani.png';
+import specialChicken from './assets/new/Special_Chicken.png';
+import specialThali from './assets/new/Special_Thali.png';
+import agreement from './assets/new/Aggriment.png';
+import franchiseRequirement from './assets/new/Franchieses_Req.jpg';
+import franchiseRequirement1 from './assets/new/Franchieses_Requirement1.jpg';
+import franchiseRequirement2 from './assets/new/Franchieses_Requirement2.jpg';
+import franchiseRequirement3 from './assets/new/Franchieses_Requirement3.jpg';
+import franchiseRequirement4 from './assets/new/Franchieses_Requirement4.jpg';
+import franchiseRules from './assets/new/Franchieses_rules.jpg';
+import franchiseRules2 from './assets/new/Franchieses_rules2.jpg';
+import teaRequirement from './assets/new/Franchieses_Tea_Requirement.jpg';
+import franchiseAgreement from './assets/new/Frenchieses_aggriment.jpg';
+import franchiseAgreement2 from './assets/new/Frenchieses_aggriment2.jpg';
+import franchiseAgreement3 from './assets/new/Frenchieses_aggriment3.jpg';
+
+export const ASSETS = {
+  logo,
+  heroPoster,
+  ownerPortrait,
+  ownerAtBranch,
+  hotelBanner,
+  teaBanner,
+  dishStrip,
+};
+
 export const CONTACT = {
-  phoneDisplay: '+91 {{PHONE_NUMBER}}',
-  phoneDial: '+91{{PHONE_NUMBER}}',
-  whatsapp: '91{{WHATSAPP_NUMBER}}',
-  email: '{{EMAIL}}',
-  mapEmbedSrc: '{{GOOGLE_MAP_EMBED_URL}}',
+  phoneDisplay: '+91 91753 79695 / +91 73705 03858',
+  phoneDial: '+919175379695',
+  whatsapp: '919175379695',
+  email: 'hello@hotelmatoshree.in',
+  mapEmbedSrc: 'https://www.google.com/maps?q=Hotel%20Dharashiv%20Che%20Matoshree%2C%20MH%20SH%2067%2C%20Tambari%20Vibhag%2C%20Dharashiv%2C%20Maharashtra%20413501&output=embed',
+  mapLink: 'https://maps.app.goo.gl/Lq13y2dUTosuMHUg7',
   social: {
-    facebook: '{{FACEBOOK_URL}}',
-    instagram: '{{INSTAGRAM_URL}}',
-    youtube: '{{YOUTUBE_URL}}',
+    instagram: 'https://www.instagram.com/hotelmatoshree_dharashiv/?hl=en',
+    youtube: 'https://www.youtube.com/@ShivamShorts6m/videos',
   },
 };
 
 // ─── Text Placeholders (interpolated into i18n strings) ──────────────────
 export const TEXT_VARS = {
   OWNER_NAME: 'Prof. Manoj Surwase',
-  ADDRESS_LINE: 'Jijau Chowk, Barshi Naka, Dharashiv',
+  ADDRESS_LINE: 'Hotel Dharashiv Che Matoshree, MH SH 67, Tambari Vibhag, Dharashiv',
   PARTNER_1_NAME: '{{PARTNER_1_NAME}}',
   PARTNER_2_NAME: '{{PARTNER_2_NAME}}',
   PARTNER_3_NAME: '{{PARTNER_3_NAME}}',
@@ -46,7 +82,8 @@ export const BRANCHES = [
     id: 'hotel-dharashiv',
     type: 'hotel',
     city: 'Dharashiv',
-    photo: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85',
+    photo: heroPoster,
+    imagePosition: 'center top',
     ownerName: 'Prof. Manoj Surwase',
     managerName: 'Prof. Manoj Surwase',
     mobile: '+91 91753 79695',
@@ -62,7 +99,8 @@ export const BRANCHES = [
     id: 'hotel-barshi',
     type: 'hotel',
     city: 'Barshi',
-    photo: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85',
+    photo: specialChicken,
+    imagePosition: 'center',
     ownerName: 'Prof. Manoj Surwase',
     managerName: 'Nikhil Dabade',
     mobile: '+91 77750 61970',
@@ -78,7 +116,8 @@ export const BRANCHES = [
     id: 'hotel-tuljapur',
     type: 'hotel',
     city: 'Tuljapur',
-    photo: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85',
+    photo: specialBiryani,
+    imagePosition: 'center',
     ownerName: 'Prof. Manoj Surwase',
     managerName: 'Rahul Rajendr Jagadale',
     mobile: '+91 96654 11400',
@@ -94,7 +133,8 @@ export const BRANCHES = [
     id: 'hotel-latur',
     type: 'hotel',
     city: 'Latur',
-    photo: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85',
+    photo: dhavaraSpecial,
+    imagePosition: 'center 42%',
     ownerName: 'Prof. Manoj Surwase',
     managerName: 'Mangesh Badgire',
     mobile: '+91 89993 22258',
@@ -110,7 +150,8 @@ export const BRANCHES = [
     id: 'hotel-solapur',
     type: 'hotel',
     city: 'Solapur',
-    photo: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85',
+    photo: specialThali,
+    imagePosition: 'center 38%',
     ownerName: 'Prof. Manoj Surwase',
     managerName: 'Pratik Pawar',
     mobile: '+91 90117 29090',
@@ -126,7 +167,8 @@ export const BRANCHES = [
     id: 'hotel-ahilyanagar',
     type: 'hotel',
     city: 'Ahilyanagar',
-    photo: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85',
+    photo: chicken,
+    imagePosition: 'center',
     ownerName: 'Prof. Manoj Surwase',
     managerName: 'Pravin (Anna) Dhabekar',
     mobile: '+91 98509 11111',
@@ -142,7 +184,8 @@ export const BRANCHES = [
     id: 'hotel-latur-ausa',
     type: 'hotel',
     city: 'Latur',
-    photo: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85',
+    photo: mutton,
+    imagePosition: 'center',
     ownerName: 'Prof. Manoj Surwase',
     managerName: 'Shrikant Subhash Salunke',
     mobile: '+91 70200 32898',
@@ -158,7 +201,8 @@ export const BRANCHES = [
     id: 'tea-dharashiv',
     type: 'tea',
     city: 'Dharashiv',
-    photo: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=85',
+    photo: teaBanner,
+    imageFit: 'contain',
     ownerName: 'Prof. Manoj Surwase',
     managerName: 'Prof. Manoj Surwase',
     mobile: '+91 91753 79695',
@@ -174,7 +218,8 @@ export const BRANCHES = [
     id: 'tea-latur',
     type: 'tea',
     city: 'Latur',
-    photo: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=85',
+    photo: teaBanner,
+    imageFit: 'contain',
     ownerName: 'Prof. Manoj Surwase',
     managerName: 'Matoshree Tea Team',
     mobile: '+91 73705 03858',
@@ -190,7 +235,8 @@ export const BRANCHES = [
     id: 'tea-maharashtra',
     type: 'tea',
     city: 'Maharashtra',
-    photo: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=85',
+    photo: teaBanner,
+    imageFit: 'contain',
     ownerName: 'Prof. Manoj Surwase',
     managerName: 'Matoshree Supply Team',
     mobile: '+91 86682 50149',
@@ -269,8 +315,16 @@ export const FRANCHISE_TYPES = [
     icon: 'UtensilsCrossed',
     accent: 'brand',
     termsImages: [
-      '/franchise-terms/hotel-terms-1.jpg',
-      '/franchise-terms/hotel-terms-2.jpg',
+      franchiseRequirement1,
+      franchiseRequirement2,
+      franchiseRequirement3,
+      franchiseRequirement4,
+      franchiseRules,
+      franchiseAgreement,
+      franchiseAgreement2,
+      agreement,
+      franchiseRules2,
+      franchiseAgreement3,
     ],
   },
   {
@@ -279,8 +333,8 @@ export const FRANCHISE_TYPES = [
     icon: 'Coffee',
     accent: 'terracotta',
     termsImages: [
-      '/franchise-terms/tea-terms-1.jpg',
-      '/franchise-terms/tea-terms-2.jpg',
+      franchiseRequirement,
+      teaRequirement,
     ],
   },
 ];

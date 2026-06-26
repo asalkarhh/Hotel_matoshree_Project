@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { LangToggle } from './Navbar.jsx';
-import { CONTACT, TEXT_VARS } from '../config.js';
+import { ASSETS, CONTACT, TEXT_VARS } from '../config.js';
 
 const FOOTER_LINKS = [
   { id: 'about',      key: 'nav.about' },
@@ -22,17 +21,14 @@ export default function Footer() {
         {/* Brand */}
         <div className="lg:col-span-2">
           <div className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand font-deva text-lg font-extrabold text-gold">
-              म
+            <span className="relative flex h-11 w-28 items-center overflow-hidden rounded bg-white p-1">
+              <img src={ASSETS.logo} alt={t('nav.brand')} className="absolute inset-1 h-[calc(100%-0.5rem)] w-[calc(100%-0.5rem)] object-contain" />
             </span>
             <span className="font-deva text-lg font-extrabold text-white">{t('nav.brand')}</span>
           </div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60">
             {t('footer.about')}
           </p>
-          <div className="mt-5">
-            <LangToggle className="!border-white/20 !bg-white/5 !text-white hover:!bg-white hover:!text-brand" />
-          </div>
         </div>
 
         {/* Quick links */}

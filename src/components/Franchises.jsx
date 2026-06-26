@@ -5,11 +5,28 @@ import { useTranslation } from 'react-i18next';
 import {
   UtensilsCrossed, Coffee, CheckCircle, ArrowRight,
   DollarSign, Maximize2, TrendingUp, X, ChevronLeft, ChevronRight, ZoomIn,
+  ChevronDown, ChevronUp,
 } from 'lucide-react';
 import { FRANCHISE_TYPES, FRANCHISE_VARS } from '../config.js';
 import Accordion from './Accordion.jsx';
 
 const ICON_MAP = { UtensilsCrossed, Coffee };
+const TERMS_PREVIEW_COUNT = 4;
+const TERM_PREVIEW_LENGTH = 48;
+
+function splitTermText(text) {
+  if (text.length <= TERM_PREVIEW_LENGTH) {
+    return { preview: text, rest: '' };
+  }
+
+  const splitAt = text.lastIndexOf(' ', TERM_PREVIEW_LENGTH);
+  const safeSplit = splitAt > 40 ? splitAt : TERM_PREVIEW_LENGTH;
+
+  return {
+    preview: text.slice(0, safeSplit).trim(),
+    rest: text.slice(safeSplit).trim(),
+  };
+}
 
 // ─── Lightbox ────────────────────────────────────────────────────────────
 function Lightbox({ images, index, onClose, onIndex, labels = {} }) {
@@ -128,15 +145,23 @@ export default function Franchises() {
   const { t } = useTranslation();
   const [activeId, setActiveId]     = useState(FRANCHISE_TYPES[0].id);
   const [lightboxIdx, setLightboxIdx] = useState(null);
+  const [termsExpanded, setTermsExpanded] = useState(false);
 
   const active     = FRANCHISE_TYPES.find((f) => f.id === activeId);
   const i18nBase   = `franchises.${active.i18nKey}`;
   const termsImages = active.termsImages || [];
+  const visibleTermsImages = termsExpanded
+    ? termsImages
+    : termsImages.slice(0, TERMS_PREVIEW_COUNT);
+  const hiddenTermsCount = Math.max(termsImages.length - visibleTermsImages.length, 0);
   const IconComp   = ICON_MAP[active.icon] || UtensilsCrossed;
 
   const includes = t(`${i18nBase}.includes`, { returnObjects: true, ...FRANCHISE_VARS });
   const termsRaw = t(`${i18nBase}.terms`,    { returnObjects: true, ...FRANCHISE_VARS });
-  const termsAccordion = termsRaw.map((text, i) => ({ q: `${i + 1}.`, a: text }));
+  const termsAccordion = termsRaw.map((text, i) => {
+    const { preview, rest } = splitTermText(text);
+    return { q: `${i + 1}.`, a: rest, preview };
+  });
 
   const stats = [
     { icon: DollarSign, label: t('franchises.labels.investment'), value: t(`${i18nBase}.investment`, FRANCHISE_VARS) },
@@ -144,7 +169,11 @@ export default function Franchises() {
     { icon: TrendingUp, label: t('franchises.labels.roi'),        value: t(`${i18nBase}.roi`,        FRANCHISE_VARS) },
   ];
 
-  const handleSwitch = (id) => { setActiveId(id); setLightboxIdx(null); };
+  const handleSwitch = (id) => {
+    setActiveId(id);
+    setLightboxIdx(null);
+    setTermsExpanded(false);
+  };
 
   return (
     <section id="franchises" className="section bg-white">
@@ -225,19 +254,27 @@ export default function Franchises() {
             {/* Right — terms accordion */}
             <div className="lg:col-span-2">
               <h4 className="mb-4 text-lg font-bold text-ink">{t('franchises.labels.terms')}</h4>
-              <Accordion items={termsAccordion} defaultOpen={0} />
+              <Accordion items={termsAccordion} defaultOpen={-1} showPreview />
             </div>
 
             {/* Full-width — official terms images */}
             {termsImages.length > 0 && (
               <div className="lg:col-span-5">
-                <div className="mt-4 rounded-2xl border border-dashed border-brand/25 bg-cream/60 p-6">
-                  <h4 className="text-lg font-bold text-ink">
-                    {t('franchises.labels.officialTerms')}
-                  </h4>
-                  <p className="mt-1 text-sm text-ink/60">{t('franchises.officialNote')}</p>
+                <div className="mt-4 rounded-2xl border border-brand/15 bg-white p-5 shadow-soft sm:p-6">
+                  <div className="flex flex-col gap-3 border-b border-black/5 pb-4 sm:flex-row sm:items-start sm:justify-between">
+                    <div>
+                      <h4 className="text-lg font-bold text-ink">
+                        {t('franchises.labels.officialTerms')}
+                      </h4>
+                      <p className="mt-1 text-sm text-ink/60">{t('franchises.officialNote')}</p>
+                    </div>
+                    <span className="inline-flex w-fit shrink-0 items-center rounded-full bg-cream px-3 py-1 text-xs font-bold text-brand">
+                      {termsImages.length} pages
+                    </span>
+                  </div>
+
                   <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-                    {termsImages.map((src, i) => (
+                    {visibleTermsImages.map((src, i) => (
                       <TermsImage
                         key={i}
                         src={src}
@@ -247,6 +284,22 @@ export default function Franchises() {
                       />
                     ))}
                   </div>
+
+                  {termsImages.length > TERMS_PREVIEW_COUNT && (
+                    <div className="mt-5 flex justify-center border-t border-black/5 pt-5">
+                      <button
+                        type="button"
+                        onClick={() => setTermsExpanded((v) => !v)}
+                        aria-expanded={termsExpanded}
+                        className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand/20 bg-cream px-5 py-2.5 text-sm font-bold text-brand transition-colors hover:bg-brand hover:text-white"
+                      >
+                        {termsExpanded
+                          ? 'Show less'
+                          : `Read more (${hiddenTermsCount} more)`}
+                        {termsExpanded ? <ChevronUp size={17} /> : <ChevronDown size={17} />}
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
