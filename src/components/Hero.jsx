@@ -25,7 +25,6 @@ export default function Hero() {
         className="absolute inset-x-0 top-0 block h-[68vh] min-h-[430px] max-h-[540px] w-full object-cover object-[center_top] sm:hidden"
       />
       <div className="absolute inset-0 bg-black/10" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
 
       {/* Content */}

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Analytics } from '@vercel/analytics/react';
 import {
   Activity, ArrowLeft, ArrowRight, BadgeCheck, BicepsFlexed, CalendarDays,
@@ -9,6 +8,9 @@ import {
 } from 'lucide-react';
 import { CONTACT } from '../config.js';
 import gymHero from '../assets/gym/matoshree-gym-hero.png';
+import gymCardio from '../assets/gym/gym-cardio.png';
+import gymPersonalTraining from '../assets/gym/gym-personal-training.png';
+import gymFunctional from '../assets/gym/gym-functional.png';
 
 const copy = {
   mr: {
@@ -76,6 +78,33 @@ const equipment = [
   { icon: Activity, mr: 'फंक्शनल झोन', en: 'Functional zone', items: ['Kettlebells', 'Battle ropes', 'TRX suspension', 'Plyo boxes', 'Resistance bands'] },
 ];
 
+const serviceImages = [
+  {
+    image: gymCardio,
+    number: '01',
+    mr: 'कार्डिओ आणि स्टॅमिना',
+    en: 'Cardio & endurance',
+    mrDesc: 'आधुनिक कार्डिओ फ्लोअरवर तुमची ऊर्जा, सहनशक्ती आणि हृदयाचे आरोग्य वाढवा.',
+    enDesc: 'Build energy, endurance and cardiovascular fitness on a modern cardio floor.',
+  },
+  {
+    image: gymPersonalTraining,
+    number: '02',
+    mr: 'पर्सनल ट्रेनिंग',
+    en: 'Personal training',
+    mrDesc: 'योग्य फॉर्म, वैयक्तिक प्लॅन आणि सातत्यपूर्ण प्रगतीसाठी तज्ज्ञ प्रशिक्षकाची साथ.',
+    enDesc: 'Expert coaching for correct form, a personal programme and consistent progress.',
+  },
+  {
+    image: gymFunctional,
+    number: '03',
+    mr: 'फंक्शनल आणि ग्रुप ट्रेनिंग',
+    en: 'Functional & group training',
+    mrDesc: 'शक्ती, हालचाल आणि आत्मविश्वास वाढवणारे उत्साही कम्युनिटी वर्कआउट्स.',
+    enDesc: 'High-energy community workouts that improve strength, movement and confidence.',
+  },
+];
+
 const faqs = [
   { mrQ: 'नवशिक्यांसाठी ट्रेनर मदत करतात का?', enQ: 'Do trainers help beginners?', mrA: 'होय. इंडक्शन, मशीन ओरिएंटेशन आणि बेसिक वर्कआउट मार्गदर्शन सदस्यत्वात उपलब्ध आहे.', enA: 'Yes. Induction, equipment orientation and basic workout guidance are included.' },
   { mrQ: 'महिलांसाठी स्वतंत्र बॅच आहे का?', enQ: 'Is there a ladies-only batch?', mrA: 'उपलब्ध बॅचेससाठी जिम टीमशी संपर्क साधा; महिलांच्या सुरक्षितता आणि सोयीला प्राधान्य आहे.', enA: 'Please confirm current batch availability; women’s comfort and safety are prioritised.' },
@@ -84,9 +113,8 @@ const faqs = [
 ];
 
 export default function GymPage() {
-  const { i18n } = useTranslation();
-  const isMr = i18n.language !== 'en';
-  const lang = isMr ? 'mr' : 'en';
+  const [lang, setLang] = useState('mr');
+  const isMr = lang === 'mr';
   const c = copy[lang];
   const [menuOpen, setMenuOpen] = useState(false);
   const message = isMr
@@ -120,7 +148,7 @@ export default function GymPage() {
             ))}
           </nav>
           <div className="hidden items-center gap-2 lg:flex">
-            <button type="button" onClick={() => i18n.changeLanguage(isMr ? 'en' : 'mr')} className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold text-white/75 hover:bg-white/10">
+            <button type="button" onClick={() => setLang(isMr ? 'en' : 'mr')} className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold text-white/75 hover:bg-white/10">
               <Globe size={16} />{isMr ? 'English' : 'मराठी'}
             </button>
             <a href="/" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm font-bold hover:border-amber-500 hover:text-amber-400">
@@ -130,7 +158,7 @@ export default function GymPage() {
           <div className="flex items-center gap-1 lg:hidden">
             <button
               type="button"
-              onClick={() => i18n.changeLanguage(isMr ? 'en' : 'mr')}
+              onClick={() => setLang(isMr ? 'en' : 'mr')}
               className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3 py-2 text-xs font-bold text-white/80 hover:border-amber-500 hover:text-amber-400"
               aria-label={isMr ? 'Change language to English' : 'मराठी भाषा निवडा'}
             >
@@ -151,9 +179,9 @@ export default function GymPage() {
 
       <main>
         <section id="top" className="relative flex min-h-screen items-center overflow-hidden pt-16 lg:pt-20">
-          <img src={gymHero} alt="Matoshree Gym modern strength training floor" className="absolute inset-0 h-full w-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#090b0d] via-transparent to-black/30" />
+          <img src={gymHero} alt="Matoshree Gym modern strength training floor" className="absolute inset-0 h-full w-full object-cover object-center brightness-[1.16] saturate-[1.08]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#090b0d]/85 via-transparent to-black/15" />
           <div className="container-max relative z-10 py-24">
             <div className="max-w-3xl">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-xs font-black uppercase tracking-[.16em] text-amber-400"><Zap size={15} />{c.eyebrow}</div>
@@ -190,6 +218,50 @@ export default function GymPage() {
                   </article>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        <section className="overflow-hidden border-y border-white/10 bg-[#0d1013] py-20 sm:py-28">
+          <div className="container-max">
+            <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+              <SectionHeading
+                eyebrow={isMr ? 'तुमचा वर्कआउट. तुमची पद्धत.' : 'Your workout. Your way.'}
+                title={isMr ? 'प्रत्येक ध्येयासाठी प्रीमियम ट्रेनिंग' : 'Premium training for every goal'}
+                sub={isMr ? 'स्वतःच्या गतीने धावा, ट्रेनरसोबत ताकद वाढवा किंवा कम्युनिटीसोबत पुढे जा.' : 'Run at your pace, build strength with a coach, or move forward with the community.'}
+              />
+              <p className="hidden items-center gap-2 pb-1 text-xs font-bold uppercase tracking-[.18em] text-white/35 md:flex">
+                <ArrowRight size={16} className="text-amber-500" />
+                {isMr ? 'अनुभव एक्सप्लोर करा' : 'Explore the experience'}
+              </p>
+            </div>
+
+            <div className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-5 sm:-mx-6 sm:px-6 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:px-0 lg:pb-0">
+              {serviceImages.map((service, index) => (
+                <article
+                  key={service.en}
+                  className={'group relative h-[430px] min-w-[84vw] snap-center overflow-hidden rounded-3xl border border-white/10 bg-black sm:min-w-[58vw] lg:min-w-0 ' + (index === 1 ? 'lg:-translate-y-5' : '')}
+                >
+                  <img
+                    src={service.image}
+                    alt={service[lang]}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+                    <div className="mb-4 flex items-center gap-3">
+                      <span className="grid h-9 w-9 place-items-center rounded-full bg-amber-500 text-xs font-black text-black">{service.number}</span>
+                      <span className="h-px flex-1 bg-white/20" />
+                    </div>
+                    <h3 className="text-2xl font-black sm:text-3xl">{service[lang]}</h3>
+                    <p className="mt-2 max-w-sm text-sm leading-6 text-white/60">{service[lang + 'Desc']}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <div className="mt-2 flex justify-center gap-1.5 lg:hidden" aria-hidden="true">
+              {serviceImages.map((service) => <span key={service.number} className="h-1.5 w-6 rounded-full bg-amber-500/40" />)}
             </div>
           </div>
         </section>
