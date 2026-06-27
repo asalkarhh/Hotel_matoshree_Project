@@ -13,8 +13,13 @@ import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import FloatingButtons from './components/FloatingButtons.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
+import GymPage from './components/GymPage.jsx';
 
 export default function App() {
+  if (window.location.pathname.replace(/\/$/, '') === '/gym') {
+    return <GymPage />;
+  }
+
   return (
     <>
       <Navbar />

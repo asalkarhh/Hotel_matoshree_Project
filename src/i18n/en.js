@@ -22,6 +22,7 @@ const en = {
       'Start your own business with a proven brand, complete setup support and full training. Enquire today for a Hotel or Tea franchise.',
     ctaApply: 'Apply for a Franchise',
     ctaView: 'View Franchises',
+    ctaGym: 'Matoshree Gym',
     trust: 'Trusted • Experienced • Successful',
   },
   about: {

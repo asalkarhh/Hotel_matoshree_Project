@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Dumbbell } from 'lucide-react';
 import { ASSETS } from '../config.js';
 
 export default function Hero() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <section
@@ -29,7 +29,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
 
       {/* Content */}
-      <div className="container-max relative z-10 flex min-h-[calc(100vh-4rem)] items-end justify-center overflow-hidden pb-28 pt-20 text-white lg:min-h-[calc(100vh-5rem)]">
+      <div className="container-max relative z-10 flex min-h-[calc(100vh-4rem)] items-end justify-center overflow-hidden pb-6 pt-20 text-white sm:pb-8 lg:min-h-[calc(100vh-5rem)] lg:pb-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,20 +37,26 @@ export default function Hero() {
           className="flex justify-center"
         >
           {/* CTAs */}
-          <div className="flex w-full max-w-full flex-wrap justify-center gap-3 px-1 sm:gap-4">
-            <a href="#apply" className="btn-primary !px-5 text-xs sm:!px-6 sm:text-sm">
-              {t('hero.ctaApply')}
-              <ArrowRight size={18} />
-            </a>
-            <a href="#franchises" className="btn-outline !px-5 text-xs sm:!px-6 sm:text-sm">
-              {t('hero.ctaView')}
+          <div className="flex w-full max-w-full flex-col items-center gap-3 px-1 sm:gap-4">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+              <a href="#apply" className="btn-primary !px-5 text-xs sm:!px-6 sm:text-sm">
+                {t('hero.ctaApply')}
+                <ArrowRight size={18} />
+              </a>
+              <a href="#franchises" className="btn-outline !px-5 text-xs sm:!px-6 sm:text-sm">
+                {t('hero.ctaView')}
+              </a>
+            </div>
+            <a
+              href="/gym"
+              className="mt-3 inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#f59e0b] bg-black/70 px-5 py-3 text-xs font-bold text-white shadow-soft backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-[#f59e0b] hover:text-black sm:mt-4 sm:px-6 sm:text-sm"
+            >
+              <Dumbbell size={18} />
+              {i18n.language === 'mr' ? 'मातोश्री जिम' : t('hero.ctaGym')}
             </a>
           </div>
         </motion.div>
       </div>
-
-      {/* Bottom fade */}
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-cream to-transparent" />
     </section>
   );
 }
