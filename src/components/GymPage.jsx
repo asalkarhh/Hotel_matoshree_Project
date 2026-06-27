@@ -11,6 +11,7 @@ import gymHero from '../assets/gym/matoshree-gym-hero.png';
 import gymCardio from '../assets/gym/gym-cardio.png';
 import gymPersonalTraining from '../assets/gym/gym-personal-training.png';
 import gymFunctional from '../assets/gym/gym-functional.png';
+import SEO from './SEO.jsx';
 
 const copy = {
   mr: {
@@ -127,12 +128,9 @@ export default function GymPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    document.title = isMr ? 'मातोश्री जिम | धाराशिव' : 'Matoshree Gym | Dharashiv';
-  }, [isMr]);
-
   return (
     <div className="min-h-screen bg-[#090b0d] font-sans text-white selection:bg-amber-500 selection:text-black">
+      <SEO page="gym" lang={lang} />
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#090b0d]/90 backdrop-blur-xl">
         <div className="container-max flex h-16 items-center justify-between lg:h-20">
           <a href="#top" className="flex items-center gap-3">

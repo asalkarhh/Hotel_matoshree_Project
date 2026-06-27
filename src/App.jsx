@@ -14,14 +14,19 @@ import Footer from './components/Footer.jsx';
 import FloatingButtons from './components/FloatingButtons.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
 import GymPage from './components/GymPage.jsx';
+import SEO from './components/SEO.jsx';
+import { useTranslation } from 'react-i18next';
 
 export default function App() {
+  const { i18n } = useTranslation();
+
   if (window.location.pathname.replace(/\/$/, '') === '/gym') {
     return <GymPage />;
   }
 
   return (
     <>
+      <SEO page="home" lang={i18n.language} />
       <Navbar />
       <main>
         <Hero />

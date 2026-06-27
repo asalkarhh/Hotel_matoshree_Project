@@ -1,0 +1,15 @@
+{
+  "name": "Hotel Dharashiv Che Matoshree",
+  "short_name": "Hotel Matoshree",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "576x576",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#8B1E1E",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

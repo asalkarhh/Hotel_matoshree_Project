@@ -29,6 +29,11 @@ export default function Hero() {
 
       {/* Content */}
       <div className="container-max relative z-10 flex min-h-[calc(100vh-4rem)] items-end justify-center overflow-hidden pb-6 pt-20 text-white sm:pb-8 lg:min-h-[calc(100vh-5rem)] lg:pb-10">
+        <h1 className="sr-only">
+          {i18n.language === 'mr'
+            ? 'हॉटेल धाराशिवचे मातोश्री — हॉटेल आणि चहा फ्रँचायझी महाराष्ट्र'
+            : 'Hotel Dharashiv Che Matoshree — Hotel and Tea Franchise Maharashtra'}
+        </h1>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
