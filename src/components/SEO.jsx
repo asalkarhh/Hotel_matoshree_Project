@@ -5,12 +5,12 @@ const SITE_URL = 'https://www.hotelmatoshree.in';
 
 const pages = {
   home: {
-    title: 'Hotel Dharashiv Che Matoshree | Hotel & Tea Franchise Maharashtra',
-    description: 'Hotel Dharashiv Che Matoshree by Prof. Manoj Surwase offers hotel and tea franchise opportunities in Maharashtra, plus Dhavara Special and special chicken dum biryani in Dharashiv.',
-    keywords: 'Hotel Matoshree, Hotel Dharashiv Che Matoshree, Dharashiv ch Matoshree, hotel franchise Maharashtra, tea franchise Maharashtra, Matoshree tea franchise, Manoj Surwase, Dhavara Special, special chicken biryani Dharashiv, chicken dum biryani Dharashiv, restaurant franchise Dharashiv',
+    title: 'Hotel Matoshree Dharashiv | Restaurant, Tea & Franchise',
+    description: 'Hotel Matoshree Dharashiv offers authentic Maharashtrian food, chicken dum biryani, Dhavara Special, tea and hotel franchise opportunities across Maharashtra.',
+    keywords: 'Hotel Matoshree Dharashiv, restaurant in Dharashiv, Hotel Dharashiv Che Matoshree, Maharashtrian food Dharashiv, chicken dum biryani Dharashiv, Dhavara Special, hotel franchise Maharashtra, tea franchise Maharashtra, Matoshree tea franchise, Manoj Surwase',
     path: '/',
     image: '/seo-hotel-matoshree.png',
-    imageAlt: 'Hotel Dharashiv Che Matoshree hotel and tea franchise',
+    imageAlt: 'Hotel Matoshree Dharashiv restaurant, tea and franchise',
   },
   gym: {
     title: 'Matoshree Gym Dharashiv | Fitness, Cardio & Personal Training',
@@ -58,8 +58,8 @@ function homeSchema(image) {
     '@graph': [
       {
         '@type': 'Organization', '@id': `${SITE_URL}/#organization`,
-        name: 'Hotel Dharashiv Che Matoshree',
-        alternateName: ['Hotel Matoshree', 'Dharashiv Ch Matoshree'],
+        name: 'Hotel Matoshree Dharashiv',
+        alternateName: ['Hotel Dharashiv Che Matoshree', 'Hotel Matoshree', 'Dharashiv Ch Matoshree'],
         url: `${SITE_URL}/`, logo: `${SITE_URL}/favicon.png`, image,
         founder: { '@type': 'Person', name: 'Prof. Manoj Surwase' },
         email: CONTACT.email, telephone: CONTACT.phoneDial,
@@ -67,7 +67,7 @@ function homeSchema(image) {
       },
       {
         '@type': 'Restaurant', '@id': `${SITE_URL}/#restaurant`,
-        name: 'Hotel Dharashiv Che Matoshree', image, url: `${SITE_URL}/`,
+        name: 'Hotel Matoshree Dharashiv', image, url: `${SITE_URL}/`,
         telephone: CONTACT.phoneDial, email: CONTACT.email, priceRange: '₹₹',
         servesCuisine: ['Maharashtrian', 'Chicken Dum Biryani', 'Dhavara Special', 'Indian'],
         address: {
@@ -87,7 +87,7 @@ function homeSchema(image) {
       },
       {
         '@type': 'WebSite', '@id': `${SITE_URL}/#website`, url: `${SITE_URL}/`,
-        name: 'Hotel Dharashiv Che Matoshree', inLanguage: ['mr-IN', 'en-IN'],
+        name: 'Hotel Matoshree Dharashiv', inLanguage: ['mr-IN', 'en-IN'],
         publisher: { '@id': `${SITE_URL}/#organization` },
       },
     ],
@@ -131,7 +131,7 @@ export default function SEO({ page = 'home', lang = 'mr' }) {
     upsertMeta('meta[name="robots"]', { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' });
     upsertMeta('meta[name="author"]', { name: 'author', content: 'Prof. Manoj Surwase' });
     upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' });
-    upsertMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: 'Hotel Dharashiv Che Matoshree' });
+    upsertMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: page === 'gym' ? 'Hotel Dharashiv Che Matoshree' : 'Hotel Matoshree Dharashiv' });
     upsertMeta('meta[property="og:locale"]', { property: 'og:locale', content: lang === 'en' ? 'en_IN' : 'mr_IN' });
     upsertMeta('meta[property="og:title"]', { property: 'og:title', content: current.title });
     upsertMeta('meta[property="og:description"]', { property: 'og:description', content: current.description });
