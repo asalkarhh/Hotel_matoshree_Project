@@ -27,11 +27,11 @@ const en = {
   },
   about: {
     eyebrow: 'About Us',
-    title: 'The Matoshree Success Story',
-    p1: 'Hotel Matoshree is a trusted and popular hotel & tea brand in Maharashtra. Over years of experience we have built a tradition of quality taste and excellent service.',
+    title: 'Hotel Matoshree Dharashiv by Manoj Surwase',
+    p1: 'Manoj Surwase is the owner and founder of Hotel Matoshree Dharashiv. This Dharashiv hotel is known for Maharashtrian food, special biryani, quality taste and welcoming service.',
     p2: 'Today, 32+ of our franchises are running successfully. We help new partners succeed with complete guidance, setup, training and continuous support.',
     ownerName: '{{OWNER_NAME}}',
-    ownerRole: 'Founder, Hotel Matoshree',
+    ownerRole: 'Owner and Founder, Hotel Matoshree Dharashiv',
     statLabel: 'Successful Franchises',
     pointsTitle: 'Why partner with us?',
     points: [

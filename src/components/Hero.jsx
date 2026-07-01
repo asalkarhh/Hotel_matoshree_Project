@@ -29,17 +29,17 @@ export default function Hero() {
 
       {/* Content */}
       <div className="container-max relative z-10 flex min-h-[calc(100vh-4rem)] items-end justify-center overflow-hidden pb-6 pt-20 text-white sm:pb-8 lg:min-h-[calc(100vh-5rem)] lg:pb-10">
-        <h1 className="sr-only">
-          {i18n.language === 'mr'
-            ? 'हॉटेल मातोश्री धाराशिव — रेस्टॉरंट, चहा आणि फ्रँचायझी महाराष्ट्र'
-            : 'Hotel Matoshree Dharashiv — Restaurant, Tea and Franchise Maharashtra'}
-        </h1>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center"
+          className="flex flex-col items-center justify-center gap-4"
         >
+          <h1 className="max-w-3xl rounded-2xl bg-black/65 px-5 py-3 text-center font-deva text-2xl font-extrabold leading-tight text-white shadow-soft backdrop-blur-sm sm:text-3xl lg:text-4xl">
+            {i18n.language === 'mr'
+              ? 'हॉटेल मातोश्री धाराशिव — प्रा. मनोज सुरवसे यांचे धाराशिव हॉटेल'
+              : 'Hotel Matoshree Dharashiv — Dharashiv Hotel by Manoj Surwase'}
+          </h1>
           {/* CTAs */}
           <div className="flex w-full max-w-full flex-col items-center gap-3 px-1 sm:gap-4">
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4">

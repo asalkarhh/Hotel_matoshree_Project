@@ -5,9 +5,9 @@ const SITE_URL = 'https://www.hotelmatoshree.in';
 
 const pages = {
   home: {
-    title: 'Hotel Matoshree Dharashiv | Restaurant, Tea & Franchise',
-    description: 'Hotel Matoshree Dharashiv offers authentic Maharashtrian food, chicken dum biryani, Dhavara Special, tea and hotel franchise opportunities across Maharashtra.',
-    keywords: 'Hotel Matoshree Dharashiv, restaurant in Dharashiv, Hotel Dharashiv Che Matoshree, Maharashtrian food Dharashiv, chicken dum biryani Dharashiv, Dhavara Special, hotel franchise Maharashtra, tea franchise Maharashtra, Matoshree tea franchise, Manoj Surwase',
+    title: 'Hotel Matoshree Dharashiv | Dharashiv Hotel by Manoj Surwase',
+    description: 'Manoj Surwase is the owner and founder of Hotel Matoshree Dharashiv, a Dharashiv hotel known for Maharashtrian food and special biryani.',
+    keywords: 'Manoj Surwase, Hotel Matoshree, Dharashiv hotel, Hotel Matoshree Dharashiv, Hotel Matoshree by Manoj Surwase, Manoj Surwase owner of Hotel Matoshree, Hotel Dharashiv Che Matoshree, restaurant in Dharashiv',
     path: '/',
     image: '/seo-hotel-matoshree.png',
     imageAlt: 'Hotel Matoshree Dharashiv restaurant, tea and franchise',
@@ -59,9 +59,9 @@ function homeSchema(image) {
       {
         '@type': 'Organization', '@id': `${SITE_URL}/#organization`,
         name: 'Hotel Matoshree Dharashiv',
-        alternateName: ['Hotel Dharashiv Che Matoshree', 'Hotel Matoshree', 'Dharashiv Ch Matoshree'],
+        alternateName: ['Hotel Matoshree', 'Dharashiv Hotel', 'Hotel Matoshree by Manoj Surwase', 'Hotel Dharashiv Che Matoshree', 'Dharashiv Ch Matoshree'],
         url: `${SITE_URL}/`, logo: `${SITE_URL}/favicon.png`, image,
-        founder: { '@type': 'Person', name: 'Prof. Manoj Surwase' },
+        founder: { '@id': `${SITE_URL}/#manoj-surwase` },
         email: CONTACT.email, telephone: CONTACT.phoneDial,
         sameAs: [CONTACT.social.instagram, CONTACT.social.youtube],
       },
@@ -75,8 +75,13 @@ function homeSchema(image) {
           addressLocality: 'Dharashiv', addressRegion: 'Maharashtra',
           postalCode: '413501', addressCountry: 'IN',
         },
-        founder: { '@type': 'Person', name: 'Prof. Manoj Surwase' },
+        founder: { '@id': `${SITE_URL}/#manoj-surwase` },
         parentOrganization: { '@id': `${SITE_URL}/#organization` }, hasMap: CONTACT.mapLink,
+      },
+      {
+        '@type': 'Person', '@id': `${SITE_URL}/#manoj-surwase`,
+        name: 'Manoj Surwase', honorificPrefix: 'Prof.', jobTitle: 'Owner and Founder of Hotel Matoshree',
+        worksFor: { '@id': `${SITE_URL}/#organization` },
       },
       {
         '@type': 'Service', '@id': `${SITE_URL}/#franchise`,
@@ -129,7 +134,7 @@ export default function SEO({ page = 'home', lang = 'mr' }) {
     upsertMeta('meta[name="description"]', { name: 'description', content: current.description });
     upsertMeta('meta[name="keywords"]', { name: 'keywords', content: current.keywords });
     upsertMeta('meta[name="robots"]', { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' });
-    upsertMeta('meta[name="author"]', { name: 'author', content: 'Prof. Manoj Surwase' });
+    upsertMeta('meta[name="author"]', { name: 'author', content: 'Manoj Surwase' });
     upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' });
     upsertMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: page === 'gym' ? 'Hotel Dharashiv Che Matoshree' : 'Hotel Matoshree Dharashiv' });
     upsertMeta('meta[property="og:locale"]', { property: 'og:locale', content: lang === 'en' ? 'en_IN' : 'mr_IN' });
