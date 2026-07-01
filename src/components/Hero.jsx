@@ -33,13 +33,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col items-center justify-center gap-4"
+          className="flex justify-center"
         >
-          <h1 className="max-w-3xl rounded-2xl bg-black/65 px-5 py-3 text-center font-deva text-2xl font-extrabold leading-tight text-white shadow-soft backdrop-blur-sm sm:text-3xl lg:text-4xl">
-            {i18n.language === 'mr'
-              ? 'हॉटेल मातोश्री धाराशिव — प्रा. मनोज सुरवसे यांचे धाराशिव हॉटेल'
-              : 'Hotel Matoshree Dharashiv — Dharashiv Hotel by Manoj Surwase'}
-          </h1>
           {/* CTAs */}
           <div className="flex w-full max-w-full flex-col items-center gap-3 px-1 sm:gap-4">
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
