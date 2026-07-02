@@ -28,6 +28,7 @@ const en = {
   about: {
     eyebrow: 'About Us',
     title: 'Hotel Matoshree Dharashiv by Manoj Surwase',
+    searchName: 'Also known locally as Dharashiv Matoshree and Hotel Dharashiv Che Matoshree.',
     p1: 'Manoj Surwase is the owner and founder of Hotel Matoshree Dharashiv. This Dharashiv hotel is known for Maharashtrian food, special biryani, quality taste and welcoming service.',
     p2: 'Today, 32+ of our franchises are running successfully. We help new partners succeed with complete guidance, setup, training and continuous support.',
     ownerName: '{{OWNER_NAME}}',

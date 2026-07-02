@@ -29,7 +29,7 @@ export default function Hero() {
       {/* Content */}
       <div className="container-max relative z-10 flex min-h-[calc(100vh-4rem)] items-end justify-center overflow-hidden pb-6 pt-20 text-white sm:pb-8 lg:min-h-[calc(100vh-5rem)] lg:pb-10">
         <h1 className="sr-only">
-          Hotel Matoshree Dharashiv — हॉटेल धाराशिवचे मातोश्री by Prof. Manoj Surwase
+          Hotel Matoshree Dharashiv — Dharashiv Matoshree by Prof. Manoj Surwase
         </h1>
         <motion.div
           initial={{ opacity: 0, y: 24 }}

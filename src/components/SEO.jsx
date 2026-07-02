@@ -67,7 +67,7 @@ function homeSchema(image) {
       {
         '@type': 'Organization', '@id': `${SITE_URL}/#organization`,
         name: 'Hotel Matoshree Dharashiv',
-        alternateName: ['Hotel Matoshree', 'Hotel Dharashiv Che Matoshree', 'Dharashiv Ch Matoshree', 'Hotel Matoshree by Manoj Surwase'],
+        alternateName: ['Hotel Matoshree', 'Dharashiv Matoshree', 'Hotel Dharashiv Che Matoshree', 'Dharashiv Ch Matoshree', 'Hotel Matoshree by Manoj Surwase'],
         url: `${SITE_URL}/`, logo: `${SITE_URL}/favicon.png`, image,
         founder: { '@id': `${SITE_URL}/#manoj-surwase` },
         email: CONTACT.email, telephone: CONTACT.phoneDial,
@@ -75,7 +75,9 @@ function homeSchema(image) {
       },
       {
         '@type': 'Restaurant', '@id': `${SITE_URL}/#restaurant`,
-        name: 'Hotel Matoshree Dharashiv', image, url: `${SITE_URL}/`,
+        name: 'Hotel Matoshree Dharashiv',
+        alternateName: ['Dharashiv Matoshree', 'Hotel Dharashiv Che Matoshree'],
+        image, url: `${SITE_URL}/`,
         telephone: CONTACT.phoneDial, email: CONTACT.email, priceRange: '₹₹',
         servesCuisine: ['Maharashtrian', 'Chicken Dum Biryani', 'Dhavara Special', 'Indian'],
         address: {
@@ -149,7 +151,7 @@ function ownerSchema(image) {
       },
       {
         '@type': 'Organization', '@id': `${SITE_URL}/#organization`,
-        name: 'Hotel Matoshree Dharashiv', alternateName: ['Hotel Matoshree', 'Hotel Dharashiv Che Matoshree'],
+        name: 'Hotel Matoshree Dharashiv', alternateName: ['Hotel Matoshree', 'Dharashiv Matoshree', 'Hotel Dharashiv Che Matoshree'],
         url: `${SITE_URL}/`, founder: { '@id': `${SITE_URL}/#manoj-surwase` },
       },
       {

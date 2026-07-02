@@ -50,6 +50,7 @@ export default function About() {
         >
           <span className="eyebrow">{t('about.eyebrow')}</span>
           <h2 className="mt-4 text-3xl sm:text-4xl">{t('about.title')}</h2>
+          <p className="mt-3 font-semibold text-brand/80">{t('about.searchName')}</p>
           <p className="mt-5 text-ink/70">{t('about.p1')}</p>
           <p className="mt-4 text-ink/70">{t('about.p2')}</p>
           <a href="/manoj-surwase" className="mt-5 inline-flex items-center gap-2 font-semibold text-brand hover:text-brand-dark">
