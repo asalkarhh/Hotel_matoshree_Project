@@ -10,6 +10,14 @@
       "destination": "/gym.html"
     },
     {
+      "source": "/manoj-surwase",
+      "destination": "/manoj-surwase.html"
+    },
+    {
+      "source": "/manoj-surwase/",
+      "destination": "/manoj-surwase.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

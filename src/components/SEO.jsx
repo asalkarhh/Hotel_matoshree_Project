@@ -5,7 +5,7 @@ const SITE_URL = 'https://www.hotelmatoshree.in';
 
 const pages = {
   home: {
-    title: 'Hotel Matoshree Dharashiv | Dharashiv Hotel by Manoj Surwase',
+    title: 'Hotel Matoshree Dharashiv | By Manoj Surwase',
     description: 'Manoj Surwase is the owner and founder of Hotel Matoshree Dharashiv, a Dharashiv hotel known for Maharashtrian food and special biryani.',
     keywords: 'Manoj Surwase, Hotel Matoshree, Dharashiv hotel, Hotel Matoshree Dharashiv, Hotel Matoshree by Manoj Surwase, Manoj Surwase owner of Hotel Matoshree, Hotel Dharashiv Che Matoshree, restaurant in Dharashiv',
     path: '/',
@@ -19,6 +19,14 @@ const pages = {
     path: '/gym',
     image: '/seo-matoshree-gym.png',
     imageAlt: 'Matoshree Gym strength and fitness centre in Dharashiv',
+  },
+  owner: {
+    title: 'Prof. Manoj Surwase | Owner of Hotel Matoshree Dharashiv',
+    description: 'Prof. Manoj Surwase is the owner and founder of Hotel Matoshree Dharashiv, a Maharashtrian restaurant and franchise brand in Dharashiv.',
+    keywords: 'Manoj Surwase, Prof Manoj Surwase, Hotel Matoshree owner, Hotel Matoshree founder, Manoj Surwase Dharashiv, Hotel Matoshree Dharashiv',
+    path: '/manoj-surwase',
+    image: '/seo-manoj-surwase.png',
+    imageAlt: 'Prof. Manoj Surwase, owner and founder of Hotel Matoshree Dharashiv',
   },
 };
 
@@ -59,7 +67,7 @@ function homeSchema(image) {
       {
         '@type': 'Organization', '@id': `${SITE_URL}/#organization`,
         name: 'Hotel Matoshree Dharashiv',
-        alternateName: ['Hotel Matoshree', 'Dharashiv Hotel', 'Hotel Matoshree by Manoj Surwase', 'Hotel Dharashiv Che Matoshree', 'Dharashiv Ch Matoshree'],
+        alternateName: ['Hotel Matoshree', 'Hotel Dharashiv Che Matoshree', 'Dharashiv Ch Matoshree', 'Hotel Matoshree by Manoj Surwase'],
         url: `${SITE_URL}/`, logo: `${SITE_URL}/favicon.png`, image,
         founder: { '@id': `${SITE_URL}/#manoj-surwase` },
         email: CONTACT.email, telephone: CONTACT.phoneDial,
@@ -77,10 +85,16 @@ function homeSchema(image) {
         },
         founder: { '@id': `${SITE_URL}/#manoj-surwase` },
         parentOrganization: { '@id': `${SITE_URL}/#organization` }, hasMap: CONTACT.mapLink,
+        openingHoursSpecification: [{
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+          opens: '11:00', closes: '23:30',
+        }],
       },
       {
         '@type': 'Person', '@id': `${SITE_URL}/#manoj-surwase`,
         name: 'Manoj Surwase', honorificPrefix: 'Prof.', jobTitle: 'Owner and Founder of Hotel Matoshree',
+        url: `${SITE_URL}/manoj-surwase`,
         worksFor: { '@id': `${SITE_URL}/#organization` },
       },
       {
@@ -122,6 +136,32 @@ function gymSchema(image) {
   };
 }
 
+function ownerSchema(image) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person', '@id': `${SITE_URL}/#manoj-surwase`,
+        name: 'Manoj Surwase', honorificPrefix: 'Prof.',
+        jobTitle: 'Owner and Founder of Hotel Matoshree Dharashiv',
+        description: pages.owner.description, url: `${SITE_URL}/manoj-surwase`, image,
+        worksFor: { '@id': `${SITE_URL}/#organization` },
+      },
+      {
+        '@type': 'Organization', '@id': `${SITE_URL}/#organization`,
+        name: 'Hotel Matoshree Dharashiv', alternateName: ['Hotel Matoshree', 'Hotel Dharashiv Che Matoshree'],
+        url: `${SITE_URL}/`, founder: { '@id': `${SITE_URL}/#manoj-surwase` },
+      },
+      {
+        '@type': 'ProfilePage', '@id': `${SITE_URL}/manoj-surwase#webpage`,
+        url: `${SITE_URL}/manoj-surwase`, name: pages.owner.title,
+        description: pages.owner.description, inLanguage: ['mr-IN', 'en-IN'],
+        mainEntity: { '@id': `${SITE_URL}/#manoj-surwase` },
+      },
+    ],
+  };
+}
+
 export default function SEO({ page = 'home', lang = 'mr' }) {
   useEffect(() => {
     const current = pages[page];
@@ -135,8 +175,8 @@ export default function SEO({ page = 'home', lang = 'mr' }) {
     upsertMeta('meta[name="keywords"]', { name: 'keywords', content: current.keywords });
     upsertMeta('meta[name="robots"]', { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' });
     upsertMeta('meta[name="author"]', { name: 'author', content: 'Manoj Surwase' });
-    upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' });
-    upsertMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: page === 'gym' ? 'Hotel Dharashiv Che Matoshree' : 'Hotel Matoshree Dharashiv' });
+    upsertMeta('meta[property="og:type"]', { property: 'og:type', content: page === 'owner' ? 'profile' : 'website' });
+    upsertMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: 'Hotel Matoshree Dharashiv' });
     upsertMeta('meta[property="og:locale"]', { property: 'og:locale', content: lang === 'en' ? 'en_IN' : 'mr_IN' });
     upsertMeta('meta[property="og:title"]', { property: 'og:title', content: current.title });
     upsertMeta('meta[property="og:description"]', { property: 'og:description', content: current.description });
@@ -147,7 +187,8 @@ export default function SEO({ page = 'home', lang = 'mr' }) {
     upsertMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: current.title });
     upsertMeta('meta[name="twitter:description"]', { name: 'twitter:description', content: current.description });
     upsertMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: image });
-    setStructuredData(page === 'gym' ? gymSchema(image) : homeSchema(image));
+    const schema = page === 'gym' ? gymSchema(image) : page === 'owner' ? ownerSchema(image) : homeSchema(image);
+    setStructuredData(schema);
   }, [page, lang]);
 
   return null;

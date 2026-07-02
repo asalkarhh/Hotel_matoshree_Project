@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import { ASSETS, TEXT_VARS } from '../config.js';
 
 export default function About() {
@@ -52,6 +52,10 @@ export default function About() {
           <h2 className="mt-4 text-3xl sm:text-4xl">{t('about.title')}</h2>
           <p className="mt-5 text-ink/70">{t('about.p1')}</p>
           <p className="mt-4 text-ink/70">{t('about.p2')}</p>
+          <a href="/manoj-surwase" className="mt-5 inline-flex items-center gap-2 font-semibold text-brand hover:text-brand-dark">
+            {t('about.ownerLink')}
+            <ArrowRight size={18} />
+          </a>
 
           <h3 className="mt-8 text-lg font-bold text-brand">{t('about.pointsTitle')}</h3>
           <ul className="mt-4 grid gap-3 sm:grid-cols-2">

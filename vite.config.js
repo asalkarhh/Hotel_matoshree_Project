@@ -7,6 +7,7 @@ function seoAssets() {
   const assets = [
     ['seo-hotel-matoshree.png', './src/assets/new/Banner.png'],
     ['seo-matoshree-gym.png', './src/assets/gym/matoshree-gym-hero.png'],
+    ['seo-manoj-surwase.png', './src/assets/new/Owner1.png'],
     ['seo-hotel-matoshree-logo.png', './src/assets/new/fevicon_logo.png'],
   ]
 
@@ -33,6 +34,7 @@ export default defineConfig({
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         gym: fileURLToPath(new URL('./gym.html', import.meta.url)),
+        owner: fileURLToPath(new URL('./manoj-surwase.html', import.meta.url)),
       },
     },
   },

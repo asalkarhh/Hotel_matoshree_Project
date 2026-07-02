@@ -32,6 +32,7 @@ const en = {
     p2: 'Today, 32+ of our franchises are running successfully. We help new partners succeed with complete guidance, setup, training and continuous support.',
     ownerName: '{{OWNER_NAME}}',
     ownerRole: 'Owner and Founder, Hotel Matoshree Dharashiv',
+    ownerLink: 'About Prof. Manoj Surwase',
     statLabel: 'Successful Franchises',
     pointsTitle: 'Why partner with us?',
     points: [

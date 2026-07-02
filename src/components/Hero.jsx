@@ -14,8 +14,7 @@ export default function Hero() {
       {/* Background layers */}
       <img
         src={ASSETS.heroPoster}
-        alt=""
-        aria-hidden="true"
+        alt="Hotel Matoshree Dharashiv — Maharashtrian thali and special chicken dum biryani"
         className="absolute inset-0 h-full w-full object-cover object-[center_top] blur-sm scale-105 sm:blur-0 sm:scale-100"
       />
       <img
@@ -29,6 +28,9 @@ export default function Hero() {
 
       {/* Content */}
       <div className="container-max relative z-10 flex min-h-[calc(100vh-4rem)] items-end justify-center overflow-hidden pb-6 pt-20 text-white sm:pb-8 lg:min-h-[calc(100vh-5rem)] lg:pb-10">
+        <h1 className="sr-only">
+          Hotel Matoshree Dharashiv — हॉटेल धाराशिवचे मातोश्री by Prof. Manoj Surwase
+        </h1>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
